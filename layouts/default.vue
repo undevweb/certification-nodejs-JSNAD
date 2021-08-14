@@ -30,7 +30,10 @@
             <v-footer app color="dark" class="white--text text-center">
                 <v-row>
                     <v-col class="pa-0 font-italic">
-
+                        <a class="white--text" href="https://github.com/undevweb/certification-nodejs-JSNAD" target="_blank">
+                            <v-icon class="white--text">mdi-github</v-icon>
+                            Repo Github
+                        </a>
                     </v-col>
                 </v-row>
             </v-footer>

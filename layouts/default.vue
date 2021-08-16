@@ -2,11 +2,11 @@
     <div id="app">
         <!--<v-app :style="{background: $vuetify.theme.themes[theme].background}">-->
         <v-app id="inspire">
-            <v-navigation-drawer v-model="drawer" app clipped>
-                <navigation-left @drawer="drawer = !drawer" />
+            <v-navigation-drawer :value="getDrawer" app clipped>
+                <navigation-left @drawer="changeDrawer" />
             </v-navigation-drawer>
 
-            <navigation @drawer="drawer = !drawer" />
+            <navigation @drawer="changeDrawer"  />
             <v-main>
                 <v-system-bar v-if="isAlertRelease" height="30" color="warning" class="text-center pa-2">
                     <v-spacer />
@@ -47,6 +47,7 @@
     import Component from "vue-class-component";
     import NavigationLeft from "~/components/layout/navigation-left.vue";
     import Navigation from "~/components/layout/Navigation.vue";
+    import {Getter, Mutation} from "nuxt-class-component";
 
     @Component
     ({
@@ -58,14 +59,18 @@
         }
     })
     export default class Default extends Vue {
-        drawer: boolean = false;
-
+        @Getter('getDrawer') getDrawer: any;
+        @Mutation('setDrawer') setDrawer : any;
         head() {
             return {
                 bodyAttrs: {
                     class: this.scrollbarTheme
                 }
             }
+        }
+
+        changeDrawer(){
+            this.setDrawer(!this.getDrawer);
         }
 
         get isAlertRelease() {

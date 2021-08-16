@@ -1,13 +1,12 @@
 <template>
     <div>
         <v-list dense>
-            <v-subheader>Admin</v-subheader>
             <v-list-item v-for="(link,i) of links" :key="i + '-link'" link dense >
                 <v-list-item-action>
                     <v-icon small>{{ link.icon }}</v-icon>
                 </v-list-item-action>
-                <v-list-item-content @click="$emit('drawer')">
-                        <router-link :to="{ path: link.path}" >{{ link.label }}</router-link>
+                <v-list-item-content>
+                        <router-link :to="{ path:'/' + getCurrentMatiere, hash: link.path}" >{{ link.label }}</router-link>
                 </v-list-item-content>
             </v-list-item>
 
@@ -25,9 +24,14 @@
         components: {},
     })
     export default class NavigationLeft extends Vue {
-        links: any[] = [
-            {path: '/admin/users', label: 'Liste des admins', icon:'mdi-face-profile'},
-            {path: '/admin/users-generate', label: 'Générer des utilisateurs', icon:'mdi-account-star'},
-        ]
+        @Getter('currentMatiereLinks') currentMatiereLinks: any;
+        @Getter('currentMatiere') currentMatiere: any;
+        get links(){
+            return this.currentMatiereLinks;
+        }
+
+        get getCurrentMatiere(){
+            return this.currentMatiere;
+        }
     }
 </script>

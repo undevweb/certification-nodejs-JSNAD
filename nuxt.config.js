@@ -2,7 +2,7 @@ require('dotenv').config();
 
 // ajouter seulement `router.base = '/<nom-du-depot>/'` si `DEPLOY_ENV` est `GH_PAGES`
 const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
-  base: '/tradyourself-website/'
+  base: '/certification-nodejs-JSNAD/'
 } : {};
 
 export default {
@@ -62,7 +62,7 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: [{ src: '~/plugins/prism' }],
   /*
   ** Nuxt.js dev-modules
   */
@@ -80,7 +80,6 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxtjs/auth',
-    ['nuxt-matomo', {matomoUrl: 'http://matomo.heckayel.fr/', siteId: 1}],
   ],
   /*
   ** Axios module configuration

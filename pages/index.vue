@@ -16,7 +16,6 @@
             </v-col>
         </v-row>
     </v-container>
-
 </template>
 
 <script lang="ts">
@@ -34,7 +33,7 @@
         matieres = [
             {title: 'Javascript fondamentaux', enabled: true,route:'/fondamentaux', name:'fondamentaux'},
             {title: 'Package.json', enabled: true,route:'/package-json', name:'package-json'},
-            {title: 'Debugging'},
+            {title: 'Debugging',enabled: true,route:'/debug', name:'debug'},
             {title: 'Error handling'},
             {title: 'Control flow'},
             {title: 'Child Process'},
